@@ -1,0 +1,18 @@
+services:
+  aims_profile_db:
+    container_name: aims_profile_db
+    image: mongo
+    ports:
+      - "27017:27017"
+  aims_profile_ms:
+    container_name: aims_profile_ms
+    build: .
+    volumes:
+      - .:/app
+    command: python src/app.py
+    ports:
+      - "4000:4000"
+    environment:
+      - MONGO_URI=mongodb://localhost:27017/aims_profile_db
+    links:
+      - aims_profile_db
