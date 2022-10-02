@@ -3,9 +3,13 @@ from flask import Flask, jsonify, request, Response
 from flask_pymongo import PyMongo
 from bson import json_util
 from bson.objectid import ObjectId
+import os
 
 app = Flask(__name__)
-app.config['MONGO_URI']='mongodb://aims_profile_db:27017/aims_profile_db'
+mongo_uri = os.environ.get('MONGO_URI')
+if mongo_uri is None:
+    raise Exception('MONGO_URI is not set')
+app.config['MONGO_URI']=mongo_uri
 mongo = PyMongo(app)
 
 # ---- PROFILES ROUTES ----
