@@ -2,30 +2,32 @@ version: "3.8"
 name: aims
 
 services:
-  profile_db:
+  profile-db:
     image: mongo:latest
     container_name: profile_db
     environment:
       - MONGO_INITDB_ROOT_USERNAME=aims
       - MONGO_INITDB_ROOT_PASSWORD=aims
-      - MONGO_INITDB_DATABASE=profile_db
+      - MONGO_INITDB_DATABASE=profiles
     ports:
-      - "27017:27017"
+      - "27019:27017"
     volumes:
-      - profile:/data/db
+      - profile_db_data:/data/db
+      - profile_db_config:/data/configdb
 
-  profile_ms:
+  profile-ms:
     build: .
     image: aims_profile_ms
     container_name: profile_ms
     environment:
-      - MONGO_URI=mongodb://aims:aims@profile_db:27017/profile_db?authSource=admin
+      - MONGO_URI=mongodb://aims:aims@profile-db:27017/profiles?authSource=admin
     ports:
       - "4000:4000"
     depends_on:
-      - profile_db
+      - profile-db
     links:
-      - profile_db
+      - profile-db
 
 volumes:
-  profile:
+  profile_db_data:
+  profile_db_config:
