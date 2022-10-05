@@ -1,6 +1,6 @@
 [
     {
-        "id_card": "123456789",
+        "user_id": "123456789",
         "name": "Santiago",
         "lastname": "Sánchez",
         "email": "sansanchezmo@unal.edu.co",
@@ -20,7 +20,7 @@
         ]
     },
     {
-        "id_card": "222222222",
+        "user_id": "222222222",
         "name": "Josué",
         "lastname": "Briceño",
         "email": "jbriceno@unal.edu.co",
@@ -49,7 +49,7 @@
         ]
     },
     {
-        "id_card": "333333333",
+        "user_id": "333333333",
         "name": "Juan Diego",
         "lastname": "Ramirez Lemos",
         "email": "jramirezle@unal.edu.co",
@@ -69,7 +69,7 @@
         ]
     },
     {
-        "id_card": "444444444",
+        "user_id": "444444444",
         "name": "Santiago",
         "lastname": "Rodríguez Vallejo",
         "email": "sarodriguezva@unal.edu.co",
@@ -89,7 +89,7 @@
         ]
     },
     {
-        "id_card": "555555555",
+        "user_id": "555555555",
         "name": "David Esteban",
         "lastname": "Hernández Gómez",
         "email": "davhernandezgo@unal.edu.co",
@@ -109,7 +109,7 @@
         ]
     },
     {
-        "id_card": "666666666",
+        "user_id": "666666666",
         "name": "Sebastián",
         "lastname": "Garnica",
         "email": "sgarnicaq@unal.edu.co",

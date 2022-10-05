@@ -22,7 +22,7 @@ def default():
 # --POST--: PROFILE
 @app.route('/profiles', methods=['POST'])
 def create_profile():
-    id_card = request.json['id_card']
+    user_id = request.json['user_id']
     name = request.json['name']
     lastname = request.json['lastname']
     email = request.json['email']
@@ -31,10 +31,10 @@ def create_profile():
     address = request.json['address']
     historials = request.json['historials']
 
-    if id_card and name and lastname and email and birthdate and phone_number and address:
+    if user_id and name and lastname and email and birthdate and phone_number and address:
         id = mongo.db.Profiles.insert_one(
             {
-                'id_card': id_card,
+                'user_id': user_id,
                 'name': name,
                 'lastname': lastname,
                 'email': email,
@@ -46,8 +46,7 @@ def create_profile():
         )
         response = {
             'MESSAGE': 'Usuario INSERTADO con éxito.',
-            'user_id': str(id),
-            'id_card': id_card,
+            'user_id': user_id,
             'name': name,
             'lastname': lastname,
             'email': email,
