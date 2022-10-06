@@ -1,3 +1,4 @@
+import mimetypes
 from flask import Flask, jsonify, request, Response
 from flask_pymongo import PyMongo
 from bson import json_util
@@ -34,12 +35,12 @@ def create_profile():
     historials = request.json['historials']
 
     if user_id and name and lastname and email and birthdate and phone_number and address:
-        id = mongo.db.Profiles.insert_one(
+        mongo.db.Profiles.insert_one(
             profileModel(user_id, name, lastname, email, birthdate, phone_number, address, historials)
         )
         response = profileModel(user_id, name, lastname, email, birthdate, phone_number, address, historials)
 
-        return response
+        return Response(response, status=201, mimetype='application/json')
     else:
         return not_found()
 
@@ -47,18 +48,24 @@ def create_profile():
 @app.route('/profiles', methods=['GET'])
 def get_profiles():
     profiles = mongo.db.Profiles.find()
-    response = json_util.dumps(profiles)
-    return Response(response, mimetype='application/json')
-
+    if profiles == None:
+        response = json_util.dumps({"message": "No hay usuarios registrados."})
+        result = Response(response, status=204, mimetype='application/json')
+    else:
+        response = json_util.dumps(profiles)
+        result = Response(response, status=200, mimetype='application/json')
+    return result
 # --GET--: PROFILE
 @app.route('/profiles/<user_id>', methods=['GET'])
 def get_profile(user_id):
     profile = mongo.db.Profiles.find_one({'user_id': user_id})
     if profile == None:
         response = json_util.dumps({"message": "Usuario no encontrado."})
+        result = Response(response, status=200, mimetype='application/json')
     else:
         response = json_util.dumps(profile)
-    return Response(response, mimetype='application/json')
+        result = Response(response, status=200, mimetype='application/json')
+    return result
 
 # --GET--: PROFILE/HISTORIAL
 @app.route('/profiles/<user_id>/historial', methods=['GET'])
@@ -66,10 +73,12 @@ def get_profile_historial(user_id):
     profile = mongo.db.Profiles.find_one({'user_id': user_id})
     if profile == None:
         response = json_util.dumps({"message": "Usuario no encontrado."})
+        result = Response(response, status=204, mimetype='application/json')
     else:
         historial = profile['historials'][0]
         response = json_util.dumps(historialModelforUser(profile["user_id"], historial['career'], historial['GPA'], historial['coursed_credits'], historial['approved_credits'], historial['reprobed_credits'], historial['enrollment_id']))
-    return Response(response, mimetype='application/json')
+        result = Response(response, status=200, mimetype='application/json')
+    return result
 
 # --DELETE--: PROFILE
 @app.route('/profiles/<user_id>', methods=['DELETE'])
