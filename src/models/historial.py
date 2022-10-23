@@ -1,15 +1,15 @@
-def historialModel(career, GPA, coursed_credits, approved_credits, reprobed_credits, enrollment_id):
+def historialModel(career, GPA, coursed_credits, approved_credits, reprobed_credits):
     historial = {
         "career": career,
         "GPA": GPA,
         "coursed_credits": coursed_credits,
         "approved_credits": approved_credits,
         "reprobed_credits": reprobed_credits,
-        "enrollment_id": enrollment_id,
     }
     return historial
 
-def historialModelforUser(user_id, career, GPA, coursed_credits, approved_credits, reprobed_credits, enrollment_id):
+
+def historialModelforUser(user_id, career, GPA, coursed_credits, approved_credits, reprobed_credits):
     historial = {
         "user_id": user_id,
         "career": career,
@@ -17,6 +17,5 @@ def historialModelforUser(user_id, career, GPA, coursed_credits, approved_credit
         "coursed_credits": coursed_credits,
         "approved_credits": approved_credits,
         "reprobed_credits": reprobed_credits,
-        "enrollment_id": enrollment_id,
     }
     return historial

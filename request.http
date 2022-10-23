@@ -18,12 +18,11 @@ Content-Type: application/json
   "address": "1234 Main St",
   "historials": [
     {
-        "career": "Computer Science",
-        "GPA": "3.5",
-        "coursed_credits": 120,
-        "approved_credits": 80,
-        "reprobed_credits": 10,
-        "enrollment_id": 1
+      "career": "Computer Science",
+      "GPA": "3.5",
+      "coursed_credits": 120,
+      "approved_credits": 80,
+      "reprobed_credits": 10
     }
   ]
 }
@@ -55,8 +54,7 @@ Content-Type: application/json
       "GPA": "4",
       "coursed_credits": 120,
       "approved_credits": 90,
-      "reprobed_credits": 10,
-      "enrollment_id": 1
+      "reprobed_credits": 10
     }
   ]
 }
