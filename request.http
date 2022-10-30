@@ -1,6 +1,6 @@
 @baseUrl=http://localhost:4000
 
-@userId={{newProfile.request.body.user_id}}
+@userId=fd6644f8-f987-4da4-93c3-8b25e3a37f63
 
 
 ### Create profile
@@ -9,16 +9,16 @@ POST {{baseUrl}}/profiles HTTP/1.1
 Content-Type: application/json
 
 {
-  "user_id": "{{$guid}}",
-  "name": "John",
-  "lastname": "Doe",
-  "email": "johndoe@gmail.com",
+  "user_id": "{{userId}}",
+  "name": "AIMS",
+  "lastname": "Student",
+  "email": "aimsstudent@unal.edu.co",
   "birthdate": "15/01/1990",
   "phone_number": "1234567890",
   "address": "1234 Main St",
   "historials": [
     {
-      "career": "Computer Science",
+      "career": 1,
       "GPA": "3.5",
       "coursed_credits": 120,
       "approved_credits": 80,
@@ -41,19 +41,18 @@ PUT {{baseUrl}}/profiles/{{userId}} HTTP/1.1
 Content-Type: application/json
 
 {
-  "user_id": "{{userId}}",
-  "name": "John",
-  "lastname": "Doe",
-  "email": "johndoe@gmail.com",
+  "name": "AIMS",
+  "lastname": "Student Updated",
+  "email": "aimsstudent@gmail.com",
   "birthdate": "15/01/1990",
   "phone_number": "1234567890",
   "address": "1234 Main St",
   "historials": [
     {
-      "career": "Computer Science",
-      "GPA": "4",
+      "career": 1,
+      "GPA": "3.5",
       "coursed_credits": 120,
-      "approved_credits": 90,
+      "approved_credits": 80,
       "reprobed_credits": 10
     }
   ]
