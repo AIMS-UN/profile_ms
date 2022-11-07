@@ -1,7 +1,8 @@
 # Model for Profile documents in Profile Collection
-def profileModel(user_id, name, lastname, email, birthdate, phone_number, address, historials):
+def profileModel(user_id, doc_id, name, lastname, email, birthdate, phone_number, address, historials):
     profile = {
         'user_id': user_id,
+        'doc_id': doc_id,
         'name': name,
         'lastname': lastname,
         'email': email,

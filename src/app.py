@@ -26,10 +26,10 @@ def default():
 
 # --POST--: PROFILE
 
-
 @app.route('/profiles', methods=['POST'])
 def create_profile():
     user_id = request.json['user_id']
+    doc_id = request.json['doc_id']
     name = request.json['name']
     lastname = request.json['lastname']
     email = request.json['email']
@@ -38,13 +38,13 @@ def create_profile():
     address = request.json['address']
     historials = request.json['historials']
 
-    if user_id and name and lastname and email and birthdate and phone_number and address:
+    if user_id is not None and doc_id is not None and name is not None and lastname is not None and email is not None and birthdate is not None:
         mongo.db.Profiles.insert_one(
-            profileModel(user_id, name, lastname, email, birthdate,
+            profileModel(user_id, doc_id, name, lastname, email, birthdate,
                          phone_number, address, historials)
         )
         response = profileModel(
-            user_id, name, lastname, email, birthdate, phone_number, address, historials)
+            user_id, doc_id, name, lastname, email, birthdate, phone_number, address, historials)
 
         return Response(response, status=201, mimetype='application/json')
     else:
